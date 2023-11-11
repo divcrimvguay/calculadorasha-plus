@@ -37,7 +37,7 @@ async function calculateHashes() {
                 calculatedHashes.push(fileInfo);
 
                 const resultElement = document.createElement('div');
-                resultElement.classList.add('result');
+                resultElement.classList.add('result_512');
                 resultElement.innerHTML = `
                     <p><b>Nombre de archivo (.ext):</b> ${fileInfo.filename}</p>
                     <p><span style="color: #007bff;"><b>Hash SHA-512:</b> ${fileInfo.hash}</span></p>

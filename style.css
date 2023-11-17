@@ -101,7 +101,7 @@ body {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	margin: 165px auto 0; /* margin: arriba derecha abajo izquierda; */
+	margin: 165px auto 60px; /* margin: arriba derecha abajo izquierda; */
 	max-width: 920px;
 	text-align: center;
 }
@@ -145,7 +145,7 @@ body {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	margin: 10px auto 0;
+	margin: -49px auto 60px;
 	max-width: 920px;
 	text-align: center;
 }

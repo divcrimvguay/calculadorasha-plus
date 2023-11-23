@@ -144,8 +144,10 @@ function printResults() {
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-1</h2>
-		<p style="text-align: left; margin-top: 0; margin-bottom: 1px;"><b>Reporte Nº:</b> .......... <b>/</b> ..........</p>
-		<div style="text-align: left; margin-bottom: 2px;"><b>Fecha y Hora:</b> ${formattedDate} - ${formattedTime}.</div>
+		<div style="text-align: left; margin-bottom: 2px;">
+			<b>Fecha y Hora:</b> ${formattedDate} - ${formattedTime}.
+			<span style="float: right;"><b>Reporte Nº:</b> .......... <b>/</b> ..........</span>
+		</div>
 		<div class="line"></div>
 		<ol>`);
 

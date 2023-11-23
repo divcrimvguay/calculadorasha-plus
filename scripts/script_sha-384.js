@@ -140,8 +140,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="imagenes/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>
-			Calculadora Algorítmica SHA+ (versión 2.6.8)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 2.6.8)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-384</h2>

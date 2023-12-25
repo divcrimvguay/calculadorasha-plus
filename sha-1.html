@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora Algorítmica SHA+</title>
+	<link rel="shortcut icon" href="images/favicon.png">
+	<meta name="author" content="Miguel Santiago Kremzky (Auditor/Técnico/Programador en Redes y Sistemas Informáticos - Perito en Informática Forense - Especialista en Ciberseguridad) :)">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+	<header class="header">
+		<div class="image_1">
+			<img src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
+		</div>
+			<img src="images/logo_2.png" alt="Escudo División Criminalística Villaguay">
+		<h1>Calculadora Algorítmica SHA+</h1>
+		<p>Versión 2.6.9</p>
+		<p><i>Policía de Entre Ríos - División Criminalística Villaguay</i></p>
+	</header>
+	<nav class="menu">
+		<a href="index.html">
+			<i class="fas fa-home"></i><b> Inicio</b>
+		</a>
+		<a href="sha-1.html" class="active">
+			<i class="fas fa-calculator"></i><b> SHA-1</b>
+		</a>
+		<a href="sha-256.html">
+			<i class="fas fa-calculator"></i><b> SHA-256</b>
+		</a>
+		<a href="sha-384.html">
+			<i class="fas fa-calculator"></i><b> SHA-384</b>
+		</a>
+		<a href="sha-512.html">
+			<i class="fas fa-calculator"></i><b> SHA-512</b>
+		</a>
+		<a href="https://youtu.be/QuhCZZoCHPQ" target="_blank">
+			<i class="fas fa-question-circle"></i><b> Ayuda</b>
+		</a>
+		<a href="acerca.html">
+			<i class="fas fa-info-circle"></i><b> Acerca</b>
+		</a>
+	</nav>
+	<div class="info-container">
+		<h2>Algoritmo SHA-1</h2>
+		<p style="text-align: justify;"><span style="color: #ddd;"><b>SHA-1:</b></span> Es un algoritmo criptográfico que se destaca por su capacidad para generar un valor hash único de <i>160 bits</i> a partir de datos específicos. Esta unicidad es esencial para verificar la integridad de la información durante investigaciones. Al calcular el valor hash original de un archivo y compararlo con el valor hash de la versión recuperada, los expertos forenses pueden detectar incluso las modificaciones más pequeñas, lo que garantiza la autenticidad de la evidencia digital.<br>
+		Además, este algoritmo se emplea en la validación de firmas digitales para verificar la autenticidad de documentos electrónicos en contextos legales. Una firma digital basada en <span style="color: #ddd;"><b>SHA-1</b></span> refleja cualquier cambio en el documento mediante un valor hash diferente, indicando alteraciones.<br>
+		Aunque aún se usa en sistemas heredados, ha sido descontinuado en aplicaciones de seguridad críticas debido a sus vulnerabilidades. Se recomienda emplear algoritmos más fuertes en investigaciones forenses, ya que ofrecen mayor resistencia a ataques y aseguran la integridad y autenticidad de los datos, garantizando investigaciones confiables en un entorno digital complejo.</p>
+	</div>
+	<div id="warningModal" class="modal" style="display: none">
+		<div class="modal-content">
+			<span class="warning-icon">
+				<img src="images/warning.png" alt="¡Advertencia!">
+			</span>
+			<p style="line-height: 1.5;"><b>¡ADVERTENCIA!</b><br>Los cálculos pueden tardar más de lo esperado en archivos grandes.</p>
+			<button class="modal-button" onclick="closeWarningModal()">Aceptar</button>
+		</div>
+	</div>
+	<div id="loadingModal" class="modal" style="display: none">
+		<div class="modal-content">
+			<span class="loading-icon">
+				<img src="images/loading.gif" alt="Calculando hashes...">
+			</span>
+			<p style="font-size: 16px; line-height: 1.5;">Calculando hashes, por favor espere...</p>
+		</div>
+	</div>
+	<div class="container">
+		<input type="file" id="fileInput" multiple>
+		<button onclick="calculateHashes()"><i class="fas fa-calculator button-icon"></i><span class="button-text">Calcular Hashes</span></button>
+		<button onclick="printResults()"><i class="fas fa-print button-icon"></i><span class="button-text">Imprimir Reporte</span></button>
+		<button onclick="clearResults()"><i class="fas fa-trash button-icon"></i><span class="button-text">Borrar Resultados</span></button>
+		<div id="hashResults"></div>
+		<div id="successModal" class="modal" style="display: none">
+			<div class="modal-content">
+				<p style="font-size: 16px; line-height: 1.5; white-space: nowrap;">¡Los hashes fueron calculados exitosamente!</p>
+				<button class="modal-button" onclick="closeModal()">Cerrar</button>
+			</div>
+		</div>
+    </div>
+    <script src="scripts/script_sha-1.js"></script>
+	<div class="down-container">
+		<p>© 2023 | Área Informática - División Criminalística Villaguay | 
+			<a href="https://www.youtube.com/channel/UCDxw-dNWtQ2cC72rBX-TKkA" target="_blank">
+				<i class="fab fa-youtube youtube-icon"></i>
+			</a>
+		</p>
+	</div>
+</body>
+</html>

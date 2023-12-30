@@ -95,7 +95,7 @@ function printResults() {
 		<meta charset="UTF-8">
 		<title>Reporte Hash SHA-256</title>
 		<meta name="author" content="Miguel Santiago Kremzky (Auditor/Técnico/Programador en Redes y Sistemas Informáticos - Perito en Informática Forense - Especialista en Ciberseguridad) :)">
-		<link rel="shortcut icon" href="imagenes/favicon.png">
+		<link rel="shortcut icon" href="images/favicon.png">
 		<style>
 			@media print {
 				.logo {
@@ -139,7 +139,7 @@ function printResults() {
 	</head>
 	<body>
 		<div class="container">
-			<img class="logo" src="imagenes/logo_1.png" alt="Escudo Policía de Entre Ríos">
+			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
 			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 2.6.9)</b>
 		</div>
 		<div class="line"></div>

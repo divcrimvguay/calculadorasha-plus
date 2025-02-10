@@ -1,6 +1,6 @@
 /*index.html y acerca.html*/
 
-/* imagen de fondo Div. Criminalística Villaguay */
+/* imagen de fondo Div. Policía Científica Villaguay */
 body {
 	background-image: url('../images/background.jpg');
 	background-size: cover;
@@ -36,7 +36,7 @@ body {
 	margin-bottom: 15px;
 }
 
-/*Logo Div. Criminalística Villaguay (.header img) - Logo P.E.R. (.image_1 img)*/
+/*Logo Div. Policía Científica Villaguay (.header img) - Logo P.E.R. (.image_1 img)*/
 .header img, .image_1 img {
 	height: auto;
 	max-width: 100%;

@@ -1,329 +1,380 @@
-/*index.html y acerca.html*/
-
-/* imagen de fondo Div. Policía Científica Villaguay */
+/* ===== ESTILOS GENERALES ===== */
 body {
-	background-image: url('../images/background.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-color: #333;
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* encabezado rectángulo negro transparente */
+/* ===== ENCABEZADO ===== */
 .header {
-	background-color: rgba(0, 0, 0, 0.7);
-	text-align: center;
-	text-shadow: 2px 2px 4px rgba(128, 128, 128, 0.5);
-	line-height: 0.2;
-	padding: 2px;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(128, 128, 128, 0.5);
+    line-height: 0.2;
+    padding: 2px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .header h1 {
-	color: white;
-	margin-top: 15px;
+    color: white;
+    margin-top: 15px;
 }
 
 .header p {
-	color: #ccc;
-	margin-bottom: 15px;
+    color: #ccc;
+    margin-bottom: 15px;
 }
-
-/*Logo Div. Policía Científica Villaguay (.header img) - Logo P.E.R. (.image_1 img)*/
+/* ===== IMAGENES DEL ENCABEZADO ===== */
 .header img, .image_1 img {
-	height: auto;
-	max-width: 100%;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+    height: auto;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
+/* ===== ESCUDO POL.CIENT.VGUAY. ===== */
 .header img {
-	width: 5.5%;
-	right: 15px; /* Predeterminado 20px */
+    width: 5.5%;
+    right: 15px;
 }
+/* ===== ESCUDO P.E.R. ===== */
 .image_1 img {
-	width: 5.5%;
-	left: 10px;
+    width: 5.5%;
+    left: 10px;
 }
 
+/* ===== MENÚ DE NAVEGACIÓN ===== */
 .menu {
-	position: fixed;
-	top: 75px; /* Predeterminado 95px */
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: 0px 10px;
-	border: 1px solid #ccc;
-	display: flex;
-	border-radius: 5px;
-	margin: 20px auto 0;
-	max-width: 920px;
-	justify-content: space-around;
-	width: 100%;
-	z-index: 1000;
-	left: 50%;
-	transform: translateX(-50%);
+    position: fixed;
+    top: 75px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    border-radius: 5px;
+    margin: 20px auto 0;
+    max-width: 920px;
+    justify-content: space-around;
+    width: 100%;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .menu a {
-	color: white;
-	text-decoration: none;
-	padding: 8px 16px;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-	transition: 0.3s;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
 }
 
 .menu a:hover {
-	background-color: white;
-	color: black;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-	text-decoration: none;
+    background-color: white;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-decoration: none;
 }
 
 .menu a.active {
-	color: white;
-	border-bottom: 3px solid yellow;
+    color: white;
+    border-bottom: 3px solid yellow;
 }
 
+/* ===== CONTENEDOR DE INFORMACIÓN ===== */
 .info-container {
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	margin: 145px auto 60px; /* Predeterminado: 165px auto 60px */
-	max-width: 920px;
-	text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 145px auto 60px;
+    max-width: 920px;
+    text-align: center;
 }
 
 .info-container h2 {
-	font-size: 20px;
-	margin: 0 0 10px;
-	text-shadow: 2px 2px 4px rgba(128, 128, 128, 0.5);
+    font-size: 20px;
+    margin: 0 0 10px;
+    text-shadow: 2px 2px 4px rgba(128, 128, 128, 0.5);
 }
 
 .info-container p {
-	color: #ccc;
-	line-height: 2;
-	margin: 0;
-	font-size: 14px;
+    color: #ccc;
+    line-height: 2;
+    margin: 0;
+    font-size: 14px;
 }
 
+/* ===== PIE DE PÁGINA ===== */
 .down-container {
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	text-align: center;
-	padding: 5px;
-	font-size: 12px;
-	height: auto;
-	width: 100%;
-	position: fixed;
-	bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
 .youtube-icon {
-	text-decoration: none;
-	color: red;
-	font-size: 13px;
+    text-decoration: none;
+    color: red;
+    font-size: 13px;
 }
 
-/*sha-1.html, sha-256, sha-384 y sha-512*/
-
+/* ===== CONTENEDOR PRINCIPAL ===== */
 .container {
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	margin: -49px auto 60px;
-	max-width: 920px;
-	text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: -49px auto 60px;
+    max-width: 920px;
+    text-align: center;
 }
 
-.result {
-	border: 1px solid #ccc;
-	padding: 5px;
-	margin: 10px 0;
-	text-align: left;
-	margin-bottom: 10px;
+/* ===== COMPONENTES DEL VERIFICADOR HASH ===== */
+.hash-input-group {
+    display: flex;
+    width: 95%;
+    max-width: 980px;
+    margin: 0 auto 15px;
 }
 
-.result p {
-	line-height: 1.2;
-	margin: 5px;
-	overflow-wrap: break-word;
+#pasteBtn {
+    width: 50px;
+    height: 34px;
+    background: #e0e0e0;
+    border: 1px solid #b0b0b0;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+#pasteBtn:hover {
+    background: #b0b0b0;
+}
+
+#hashToCompare {
+    flex: 1;
+    height: 34px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    background: white;
+    color: black;
+    font-family: monospace;
+    width: calc(100% - 50px);
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.gray-button {
+    width: 150px; /* 180px predeterminado*/
+    height: 20px; /* 34px predeterminado */
+    background: #e0e0e0;
+    border: 1px solid #b0b0b0;
+    color: black;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-weight: normal; /* Texto sin negrita */
+    font-family: Arial, sans-serif;
+    transition: background 0.2s;
+    margin: 5px;
+    box-shadow: none; /* Sin sombra */
+}
+
+.gray-button:hover {
+    background: #d0d0d0; /* Gris un poco más oscuro al pasar el mouse */
+    border-color: #909090;
 }
 
 .button-icon {
-	display: inline-block;
-	vertical-align: middle;
+    margin-right: 2px; /* Predeterminado 4px */
+    font-size: 14px;
+    color: #333;
 }
 
 .button-text {
-	margin-left: 10px;
-	vertical-align: middle;
+    margin-left: 2px; /* Predeterminado 4px */
 }
 
-.container button {
-	margin-right: 10px;
-	max-width: 172px;
-	margin: 0 auto;
+.result {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px 0;
+    text-align: left;
 }
 
+.result p {
+    line-height: 1.2;
+    margin: 5px;
+    overflow-wrap: break-word;
+}
+
+/* ===== MODALES ===== */
 .modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
-	background-color: black;
-	color: white;
-	padding: 20px;
-	max-width: 340px;
-	text-align: center;
-	font-size: 16px;
-	border-radius: 5px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	display: inline-block;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 20px;
+    max-width: 340px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal-button {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	cursor: pointer;
+    background: #e0e0e0 !important;
+    color: black !important;
+    border: 1px solid #b0b0b0 !important;
+    padding: 10px 20px;
+    border-radius: 0 !important;
+    cursor: pointer;
 }
 
-#warningModal .modal-content {
-	background-color: black;
-	color: white;
-	padding: 20px;
-	max-width: 340px;
-	text-align: center;
-	border-radius: 5px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	display: inline-block;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.modal-button:hover {
+    background: #d0d0d0 !important;
 }
 
 #warningModal .warning-icon img {
-	width: 45px;
-	height: auto;
-	margin-bottom: -10px;
-}
-
-#warningModal .modal-button {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	cursor: pointer;
+    width: 45px;
+    height: auto;
+    margin-bottom: -10px;
 }
 
 .loading-icon img {
-	width: 45px;
-	height: auto;
+    width: 45px;
+    height: auto;
 }
 
+/* ===== RESPONSIVE ===== */
 @media only screen and (max-width: 600px) {
-
-	.header {
-		padding: 2px;
-	}
-
-	.header h1 {
-		font-size: 16px;
-	}
-
-	.header p {
-		font-size: 12px;
-	}
-	
-	.menu {
-		top: 50px;
-		margin: 20px auto 0;
-		font-size: 10px;
-		text-align: center;
-	}
-
-	.menu a {
-		padding: 4px;
-	}
-
-	.info-container {
-		margin: 101px auto 50px;
-	}
-
-	.info-container h2 {
-		font-size: 14px;
-	}
-	
-	.info-container p {
-		font-size: 11px;
-	}
-	
-	.down-container {
-		font-size: 10px;
-	}
-
-	.youtube-icon {
-		font-size: 11px;
-	}
-
-/*sha-1.html, sha-256, sha-384 y sha-512*/
-
-	.container {
-		margin: -43px auto 50px;
-		font-size: 11px;
-	}
-
-	.result p {
-		font-size: 8px;
-	}
-	
-	.button-icon {
-		font-size: 10x;
-	}
-
-	.button-text {
-		font-size: 10px;
-	}
-
-	.result_384 p {
-		font-size: 6.5px;
-	}
-
-	.result_512 p {
-		font-size: 5px;
-	}
-
-	.modal-content {
-		font-size: 12px;
+    .header {
+        padding: 2px;
     }
-
+    
+    .header h1 {
+        font-size: 16px;
+    }
+    
+    .header p {
+        font-size: 12px;
+    }
+    
+    .menu {
+        top: 50px;
+        margin: 20px auto 0;
+        font-size: 10px !important;
+    }
+    
+    .menu a {
+        padding: 4px !important;
+    }
+    
+    .info-container {
+        margin: 101px auto 50px;
+    }
+    
+    .info-container h2 {
+        font-size: 14px;
+    }
+    
+    .info-container p {
+        font-size: 11px;
+    }
+    
+    .down-container {
+        font-size: 10px;
+    }
+    
+    .youtube-icon {
+        font-size: 11px;
+    }
+    
+    .container {
+        margin: -43px auto 50px;
+        font-size: 11px;
+    }
+    
+    .hash-input-group {
+        width: 100%;
+    }
+    
+    #pasteBtn {
+        width: 45px;
+        height: 32px;
+    }
+    
+    #hashToCompare {
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .gray-button {
+        width: 100%;
+        max-width: 220px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .result p {
+        font-size: 8px;
+    }
+    
+    .modal-content {
+        font-size: 12px;
+    }
 }

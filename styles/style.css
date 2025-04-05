@@ -33,6 +33,7 @@ body {
     color: #ccc;
     margin-bottom: 15px;
 }
+
 /* ===== IMAGENES DEL ENCABEZADO ===== */
 .header img, .image_1 img {
     height: auto;
@@ -41,11 +42,13 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
+
 /* ===== ESCUDO POL.CIENT.VGUAY. ===== */
 .header img {
     width: 5.5%;
     right: 15px;
 }
+
 /* ===== ESCUDO P.E.R. ===== */
 .image_1 img {
     width: 5.5%;
@@ -147,6 +150,100 @@ body {
     text-align: center;
 }
 
+/* ===== BOTONES ESTILO GRIS ===== */
+.gray-button {
+    width: 150px;
+    height: 34px;
+    background: #e0e0e0;
+    border: 1px solid #b0b0b0;
+    color: black;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    transition: all 0.3s;
+    margin: 5px;
+    box-shadow: none;
+    font-size: 12px;
+}
+
+.gray-button:hover {
+    background: #d0d0d0;
+    border-color: #909090;
+}
+
+.button-icon {
+    margin-right: 2px;
+    font-size: 14px;
+    color: #333;
+}
+
+.button-text {
+    margin-left: 2px;
+    font-size: 12px;
+}
+
+/* ===== BOTÓN DE ARCHIVOS CON INDICADOR LED ===== */
+.file-input-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 34px;
+    margin: 5px;
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+}
+
+.file-input-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #e0e0e0;
+    border: 1px solid #b0b0b0;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 0 15px 0 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.file-input-button:hover {
+    background: #d0d0d0;
+    border-color: #909090;
+}
+
+.file-input-led {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff3b30;
+    box-shadow: 0 0 3px rgba(255, 59, 48, 0.5);
+    transition: all 0.3s ease;
+}
+
+.file-input-wrapper.has-files .file-input-led {
+    background-color: #34c759;
+    box-shadow: 0 0 5px rgba(52, 199, 89, 0.7);
+}
+
 /* ===== COMPONENTES DEL VERIFICADOR HASH ===== */
 .hash-input-group {
     display: flex;
@@ -193,39 +290,6 @@ body {
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 10px;
-}
-
-.gray-button {
-    width: 150px; /* 180px predeterminado*/
-    height: 20px; /* 34px predeterminado */
-    background: #e0e0e0;
-    border: 1px solid #b0b0b0;
-    color: black;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    font-weight: normal; /* Texto sin negrita */
-    font-family: Arial, sans-serif;
-    transition: background 0.2s;
-    margin: 5px;
-    box-shadow: none; /* Sin sombra */
-}
-
-.gray-button:hover {
-    background: #d0d0d0; /* Gris un poco más oscuro al pasar el mouse */
-    border-color: #909090;
-}
-
-.button-icon {
-    margin-right: 2px; /* Predeterminado 4px */
-    font-size: 14px;
-    color: #333;
-}
-
-.button-text {
-    margin-left: 2px; /* Predeterminado 4px */
 }
 
 .result {
@@ -363,11 +427,33 @@ body {
         align-items: center;
     }
     
-    .gray-button {
+    .gray-button,
+    .file-input-wrapper {
         width: 100%;
         max-width: 220px;
         height: 32px;
+    }
+    
+    .gray-button,
+    .file-input-button,
+    .file-input-button span,
+    .button-text {
+        font-size: 11px;
+    }
+    
+    .button-icon,
+    .file-input-button i {
         font-size: 12px;
+    }
+    
+    .file-input-button {
+        padding: 0 10px 0 20px;
+    }
+    
+    .file-input-led {
+        width: 6px;
+        height: 6px;
+        left: 5px;
     }
     
     .result p {

@@ -16,7 +16,7 @@
         </div>
             <img src="images/logo_2.png" alt="Escudo División Policía Científica Villaguay">
         <h1>Calculadora Algorítmica SHA+</h1>
-        <p>Versión 2.9.2</p>
+        <p>Versión 3.0.0</p>
         <p><i>Policía de Entre Ríos - División Policía Científica Villaguay</i></p>
     </header>
     <nav class="menu">
@@ -69,8 +69,15 @@
             <p style="font-size: 16px; line-height: 1.5;">Calculando hashes, por favor espere...</p>
         </div>
     </div>
-    <div class="container">
-        <input type="file" id="fileInput" multiple>
+	<div class="container">
+		<div class="file-input-wrapper">
+			<input type="file" id="fileInput" multiple>
+			<label class="file-input-button">
+				<span class="file-input-led"></span>
+				<i class="fas fa-folder-open button-icon"></i>
+				<span class="button-text">Seleccionar archivos</span>
+			</label>
+		</div>
 		<button class="gray-button" onclick="calculateHashes()">
 			<i class="fas fa-calculator button-icon"></i>
 			<span class="button-text">Calcular Hashes</span>
@@ -83,13 +90,13 @@
 			<i class="fas fa-redo button-icon"></i>
 			<span class="button-text">Reiniciar</span>
 		</button>
-        <div id="hashResults"></div>
-        <div id="successModal" class="modal" style="display: none">
-            <div class="modal-content">
+		<div id="hashResults"></div>
+		<div id="successModal" class="modal" style="display: none">
+			<div class="modal-content">
 				<p style="font-size: 16px; line-height: 1.5; white-space: nowrap;">¡Los hashes fueron calculados exitosamente!</p>
-                <button class="modal-button" onclick="closeModal()">Cerrar</button>
-            </div>
-        </div>
+				<button class="modal-button" onclick="closeModal()">Cerrar</button>
+			</div>
+		</div>
     </div>
     <script src="scripts/script_sha-384.js"></script>
 	<div class="down-container">

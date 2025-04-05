@@ -16,7 +16,7 @@
         </div>
         <img src="images/logo_2.png" alt="Escudo División Policía Científica Villaguay">
         <h1>Calculadora Algorítmica SHA+</h1>
-        <p>Versión 2.9.2</p>
+        <p>Versión 3.0.0</p>
         <p><i>Policía de Entre Ríos - División Policía Científica Villaguay</i></p>
     </header>
 
@@ -69,9 +69,14 @@
         </div>
 
         <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-            <button class="gray-button" onclick="document.getElementById('fileInput').click()">
-                <i class="fas fa-folder-open button-icon"></i>
-                <span class="button-text">Elegir Archivo</span>
+            <div class="file-input-wrapper">
+				<input type="file" id="fileInput" style="display: none;">
+				<label class="file-input-button" for="fileInput">
+					<span class="file-input-led"></span>
+					<i class="fas fa-folder-open button-icon"></i>
+					<span class="button-text">Seleccionar archivo</span>
+				</label>
+			</div>
             </button>
             <button class="gray-button" onclick="calculateHashes()">
                 <i class="fas fa-calculator button-icon"></i>

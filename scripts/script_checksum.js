@@ -65,7 +65,7 @@ async function calculateHashes() {
 
     try {
         const file = fileInput.files[0];
-        if (file.size > 100000000) { // 100MB
+        if (file.size > 1000000000) { // 1000MB
             await new Promise(resolve => {
                 showWarningModal();
                 document.querySelector('#warningModal button').onclick = () => {

@@ -1,4 +1,4 @@
-// Funciones para modales
+// Funciones para los modales.
 function showWarningModal() {
     document.getElementById('warningModal').style.display = 'block';
 }
@@ -19,7 +19,7 @@ function closeModal() {
     document.getElementById('successModal').style.display = 'none';
 }
 
-// Función para pegar
+// Función para pegar.
 document.getElementById('pasteBtn').addEventListener('click', async function() {
     const input = document.getElementById('hashToCompare');
         
@@ -34,7 +34,7 @@ document.getElementById('pasteBtn').addEventListener('click', async function() {
             }
         }
 
-        // Fallback para HTTP/navegadores antiguos
+        // Fallback para HTTP/navegadores antiguos.
         input.focus();
         const success = document.execCommand('paste');
         if (!success) {
@@ -42,7 +42,7 @@ document.getElementById('pasteBtn').addEventListener('click', async function() {
         }
     } catch (error) {
         console.error('Error al pegar:', error);
-        // Solución alternativa con prompt
+        // Solución alternativa con prompt.
         const clipboardText = prompt('Por favor pegue el hash manualmente (Ctrl+V):');
         if (clipboardText !== null) {
             input.value = clipboardText.trim();
@@ -50,7 +50,7 @@ document.getElementById('pasteBtn').addEventListener('click', async function() {
     }
 });
 
-// Función principal para calcular hashes
+// Función principal para calcular los hashes.
 async function calculateHashes() {
     const fileInput = document.getElementById('fileInput');
     const hashToCompare = document.getElementById('hashToCompare').value.trim().toLowerCase();
@@ -65,7 +65,7 @@ async function calculateHashes() {
 
     try {
         const file = fileInput.files[0];
-        if (file.size > 1000000000) { // 1000MB
+        if (file.size > 10000000000) { // 1GB
             await new Promise(resolve => {
                 showWarningModal();
                 document.querySelector('#warningModal button').onclick = () => {
@@ -115,7 +115,7 @@ async function calculateHashes() {
     }
 }
 
-// Función para actualizar el estado del botón de archivos
+// Función para actualizar el estado del botón de los archivos.
 function updateFileButtonStatus() {
     const fileInput = document.getElementById('fileInput');
     const wrapper = fileInput.closest('.file-input-wrapper');
@@ -130,7 +130,7 @@ function updateFileButtonStatus() {
     }
 }
 
-// Función para limpiar los resultados
+// Función para limpiar los resultados.
 function clearResults() {
     const fileInput = document.getElementById('fileInput');
     fileInput.value = '';
@@ -138,18 +138,18 @@ function clearResults() {
     document.getElementById('hashResults').innerHTML = '';
     document.getElementById('successModal').style.display = 'none';
     
-    updateFileButtonStatus(); // Actualiza el estado del botón
+    updateFileButtonStatus(); // Actualiza el estado del botón.
 }
 
-// Eventos
+// Eventos.
 document.getElementById('fileInput').addEventListener('change', function(e) {
     updateFileButtonStatus();
-    if (this.files.length > 0 && this.files[0].size > 100000000) {
+    if (this.files.length > 0 && this.files[0].size > 1000000000) {
         showWarningModal();
     }
 });
 
-// Inicialización
+// Inicialización.
 document.addEventListener('DOMContentLoaded', function() {
     updateFileButtonStatus();
 });

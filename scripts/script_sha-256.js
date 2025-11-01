@@ -164,7 +164,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.3.1)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.3.2)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-256</h2>
@@ -239,18 +239,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar estado del botón
     updateFileButtonStatus();
-    
-    // Configurar botón de pegar (si existe)
-    const pasteBtn = document.getElementById('pasteBtn');
-    if (pasteBtn) {
-        pasteBtn.addEventListener('click', async function() {
-            try {
-                const text = await navigator.clipboard.readText();
-                document.getElementById('hashToCompare').value = text.trim();
-            } catch (error) {
-                console.error('Error al pegar:', error);
-                alert('No se pudo acceder al portapapeles. Por favor pegue manualmente.');
-            }
-        });
-    }
+
 });

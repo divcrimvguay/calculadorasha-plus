@@ -72,31 +72,27 @@ async function calculateHashes() {
 }
 
 async function calculateFileHash(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
+    const CHUNK_SIZE = 1024 * 1024; // 1 MB
+    const hashInstance = sha512.create();
+    
+    for (let offset = 0; offset < file.size; offset += CHUNK_SIZE) {
+        const chunkEnd = Math.min(offset + CHUNK_SIZE, file.size);
+        const chunk = file.slice(offset, chunkEnd);
         
-        reader.onload = async function(event) {
-            try {
-                const dataBuffer = event.target.result;
-                const hashBuffer = await crypto.subtle.digest('SHA-512', dataBuffer);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-                
-                resolve({
-                    filename: file.name,
-                    hash: hashHex
-                });
-            } catch (error) {
-                reject(error);
-            }
-        };
+        const chunkBuffer = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(new Uint8Array(e.target.result));
+            reader.onerror = () => reject(new Error(`Error leyendo chunk en offset ${offset}`));
+            reader.readAsArrayBuffer(chunk);
+        });
         
-        reader.onerror = () => {
-            reject(new Error("Error leyendo el archivo"));
-        };
-        
-        reader.readAsArrayBuffer(file);
-    });
+        hashInstance.update(chunkBuffer);
+    }
+    
+    return {
+        filename: file.name,
+        hash: hashInstance.hex()
+    };
 }
 
 // Función para imprimir resultados
@@ -164,7 +160,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.3.3)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.4.4)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-512</h2>

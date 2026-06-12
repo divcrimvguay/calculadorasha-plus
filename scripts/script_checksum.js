@@ -1,4 +1,12 @@
-// Funciones para los modales.
+// Mapeo de longitud de hash → algoritmo
+const HASH_MAP = {
+    40: { name: 'SHA-1', instance: () => sha1.create() },
+    64: { name: 'SHA-256', instance: () => sha256.create() },
+    96: { name: 'SHA-384', instance: () => sha384.create() },
+    128: { name: 'SHA-512', instance: () => sha512.create() }
+};
+
+// Funciones para los modales
 function showWarningModal() {
     document.getElementById('warningModal').style.display = 'block';
 }
@@ -19,45 +27,76 @@ function closeModal() {
     document.getElementById('successModal').style.display = 'none';
 }
 
-// Función para pegar.
+// Función para pegar
 document.getElementById('pasteBtn').addEventListener('click', async function() {
     const input = document.getElementById('hashToCompare');
-        
+    
     try {
         if (navigator.clipboard?.readText) {
-            try {
-                const text = await navigator.clipboard.readText();
-                input.value = text.trim();
-                return;
-            } catch (error) {
-                console.log('Permiso denegado, intentando método alternativo...');
-            }
-        }
-
-        // Fallback para HTTP/navegadores antiguos.
-        input.focus();
-        const success = document.execCommand('paste');
-        if (!success) {
-            throw new Error('No se pudo acceder al portapapeles');
+            const text = await navigator.clipboard.readText();
+            input.value = text.trim();
+            return;
         }
     } catch (error) {
-        console.error('Error al pegar:', error);
-        // Solución alternativa con prompt.
-        const clipboardText = prompt('Por favor pegue el hash manualmente (Ctrl+V):');
-        if (clipboardText !== null) {
-            input.value = clipboardText.trim();
-        }
+        console.log('Clipboard API no disponible, usando prompt...');
+    }
+
+    const clipboardText = prompt('Por favor pegue el hash manualmente (Ctrl+V):');
+    if (clipboardText !== null) {
+        input.value = clipboardText.trim();
     }
 });
 
-// Función principal para calcular los hashes.
+// Detectar algoritmo por longitud del hash ingresado
+function detectAlgorithm(hashInput) {
+    const cleanHash = hashInput.replace(/\s/g, '').toLowerCase();
+    if (/^[0-9a-f]+$/.test(cleanHash) && HASH_MAP[cleanHash.length]) {
+        return HASH_MAP[cleanHash.length];
+    }
+    return null;
+}
+
+// Calcular hash incremental de un archivo
+async function calculateIncrementalHash(file, algorithm) {
+    const CHUNK_SIZE = 1024 * 1024; // 1 MB
+    const hashInstance = algorithm.instance();
+    
+    for (let offset = 0; offset < file.size; offset += CHUNK_SIZE) {
+        const chunkEnd = Math.min(offset + CHUNK_SIZE, file.size);
+        const chunk = file.slice(offset, chunkEnd);
+        
+        const chunkBuffer = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(new Uint8Array(e.target.result));
+            reader.onerror = () => reject(new Error(`Error leyendo chunk en offset ${offset}`));
+            reader.readAsArrayBuffer(chunk);
+        });
+        
+        hashInstance.update(chunkBuffer);
+    }
+    
+    return hashInstance.hex();
+}
+
+// Función principal para calcular y verificar hashes
 async function calculateHashes() {
     const fileInput = document.getElementById('fileInput');
     const hashToCompare = document.getElementById('hashToCompare').value.trim().toLowerCase();
     const hashResults = document.getElementById('hashResults');
-        
+    
     if (!fileInput.files.length) {
         alert('Por favor, seleccione un archivo primero.');
+        return;
+    }
+
+    if (!hashToCompare) {
+        alert('Por favor, ingrese un hash para comparar.');
+        return;
+    }
+
+    const detectedAlgo = detectAlgorithm(hashToCompare);
+    if (!detectedAlgo) {
+        alert('El hash ingresado no es válido. Debe tener 40, 64, 96 o 128 caracteres hexadecimales.\n\nSHA-1: 40 | SHA-256: 64 | SHA-384: 96 | SHA-512: 128');
         return;
     }
 
@@ -65,44 +104,25 @@ async function calculateHashes() {
 
     try {
         const file = fileInput.files[0];
-        if (file.size > 10000000000) { // 1GB
-            await new Promise(resolve => {
-                showWarningModal();
-                document.querySelector('#warningModal button').onclick = () => {
-                    closeWarningModal();
-                    resolve();
-                };
-            });
-        }
+        
+        const hashHex = await calculateIncrementalHash(file, detectedAlgo);
+        const isMatch = hashHex === hashToCompare;
 
-        const dataBuffer = await file.arrayBuffer();
-        let resultHTML = `<div class="result"><p><b>Nombre de archivo (.ext):</b> ${file.name}</p>`;
-        let matchFound = false;
+        const resultHTML = `
+            <div class="result">
+                <p><b>Nombre de archivo (.ext):</b> ${file.name}</p>
+                <p><b>Algoritmo detectado:</b> ${detectedAlgo.name}</p>
+                <p style="color: #007bff;"><b>Hash calculado:</b> ${hashHex}</p>
+                <p style="color: ${isMatch ? '#28a745' : '#dc3545'}; font-size: 18px; margin-top: 10px;">
+                    <b>${isMatch ? '✅ COINCIDEN' : '❌ NO COINCIDEN'}</b>
+                </p>
+            </div>
+        `;
 
-        const algorithms = ['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'];
-        for (const algo of algorithms) {
-            try {
-                const hashBuffer = await crypto.subtle.digest(algo, dataBuffer);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-                    
-                const isMatch = hashToCompare && hashHex === hashToCompare;
-                if (isMatch) matchFound = true;
-
-                resultHTML += `
-                    <p style="color: ${isMatch ? '#28a745' : '#007bff'}; margin: 5px 0;">
-                        <b>${algo}:</b> ${hashHex} ${isMatch ? '✅' : ''}
-                    </p>
-                `;
-            } catch (error) {
-                console.error(`Error calculando ${algo}:`, error);
-            }
-        }
-
-        hashResults.innerHTML = resultHTML + '</div>';
-            
+        hashResults.innerHTML = resultHTML;
+        
         const successModal = document.getElementById('successModal');
-        successModal.querySelector('p').textContent = matchFound 
+        successModal.querySelector('p').textContent = isMatch 
             ? '✅ Coincidencia verificada' 
             : '❌ No se encontraron coincidencias';
         successModal.style.display = 'block';
@@ -115,7 +135,7 @@ async function calculateHashes() {
     }
 }
 
-// Función para actualizar el estado del botón de los archivos.
+// Función para actualizar el estado del botón de archivos
 function updateFileButtonStatus() {
     const fileInput = document.getElementById('fileInput');
     const wrapper = fileInput.closest('.file-input-wrapper');
@@ -130,7 +150,7 @@ function updateFileButtonStatus() {
     }
 }
 
-// Función para limpiar los resultados.
+// Función para limpiar los resultados
 function clearResults() {
     const fileInput = document.getElementById('fileInput');
     fileInput.value = '';
@@ -138,18 +158,15 @@ function clearResults() {
     document.getElementById('hashResults').innerHTML = '';
     document.getElementById('successModal').style.display = 'none';
     
-    updateFileButtonStatus(); // Actualiza el estado del botón.
+    updateFileButtonStatus();
 }
 
-// Eventos.
+// Eventos
 document.getElementById('fileInput').addEventListener('change', function(e) {
     updateFileButtonStatus();
-    if (this.files.length > 0 && this.files[0].size > 1000000000) {
-        showWarningModal();
-    }
 });
 
-// Inicialización.
+// Inicialización
 document.addEventListener('DOMContentLoaded', function() {
     updateFileButtonStatus();
 });

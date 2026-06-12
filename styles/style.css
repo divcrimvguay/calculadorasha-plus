@@ -22,6 +22,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-sizing: border-box;
 }
 
 .header h1 {
@@ -68,10 +69,11 @@ body {
     margin: 20px auto 0;
     max-width: 920px;
     justify-content: space-around;
-    width: 100%;
+    width: calc(100% - 40px);
     z-index: 1000;
     left: 50%;
     transform: translateX(-50%);
+    box-sizing: border-box;
 }
 
 .menu a {
@@ -104,6 +106,8 @@ body {
     margin: 145px auto 60px;
     max-width: 920px;
     text-align: center;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
 }
 
 .info-container h2 {
@@ -130,6 +134,7 @@ body {
     width: 100%;
     position: fixed;
     bottom: 0;
+    box-sizing: border-box;
 }
 
 .youtube-icon {
@@ -148,6 +153,8 @@ body {
     margin: -49px auto 60px;
     max-width: 920px;
     text-align: center;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
 }
 
 /* ===== BOTONES ESTILO GRIS ===== */
@@ -313,10 +320,10 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000;
 }
 
 .modal-content {
@@ -324,6 +331,7 @@ body {
     color: white;
     padding: 20px;
     max-width: 340px;
+    width: 90%;
     text-align: center;
     font-size: 16px;
     border-radius: 5px;
@@ -360,51 +368,177 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
-@media only screen and (max-width: 600px) {
+
+/* Tablets en horizontal y notebooks pequeñas (1024px - 1366px) */
+@media only screen and (max-width: 1024px) {
+    .menu {
+        top: 75px;
+        width: calc(100% - 30px);
+    }
+    
+    .menu a {
+        padding: 8px 12px;
+    }
+    
+    .info-container {
+        margin: 145px auto 60px;
+        width: calc(100% - 30px);
+    }
+    
+    .container {
+        width: calc(100% - 30px);
+    }
+}
+
+/* Tablets en vertical (600px - 900px) */
+@media only screen and (max-width: 900px) {
+    .header h1 {
+        font-size: 18px;
+    }
+    
+    .header p {
+        font-size: 13px;
+    }
+    
+    .header img, .image_1 img {
+        width: 4.5%;
+    }
+    
+    .menu {
+        top: 65px;
+        flex-wrap: wrap;
+        padding: 5px;
+        width: calc(100% - 20px);
+    }
+    
+    .menu a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .info-container {
+        margin: 125px auto 55px;
+        width: calc(100% - 20px);
+    }
+    
+    .info-container h2 {
+        font-size: 18px;
+    }
+    
+    .info-container p {
+        font-size: 13px;
+    }
+    
+    .container {
+        margin: -45px auto 55px;
+        width: calc(100% - 20px);
+    }
+    
+    .gray-button,
+    .file-input-wrapper {
+        width: 140px;
+    }
+}
+
+/* Tablets pequeñas y celulares grandes (600px - 768px) */
+@media only screen and (max-width: 768px) {
     .header {
         padding: 2px;
     }
     
     .header h1 {
         font-size: 16px;
+        margin-top: 12px;
     }
     
     .header p {
-        font-size: 12px;
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    
+    .header img, .image_1 img {
+        width: 5%;
+    }
+    
+    .header img {
+        right: 10px;
+    }
+    
+    .image_1 img {
+        left: 8px;
     }
     
     .menu {
-        top: 50px;
-        margin: 20px auto 0;
-        font-size: 10px !important;
+        top: 55px;
+        margin: 15px auto 0;
+        font-size: 11px;
+        padding: 3px 5px;
+        width: calc(100% - 16px);
     }
     
     .menu a {
-        padding: 4px !important;
+        padding: 5px 8px;
+        font-size: 11px;
     }
     
     .info-container {
-        margin: 101px auto 50px;
+        margin: 105px auto 50px;
+        width: calc(100% - 16px);
+        padding: 8px;
     }
     
     .info-container h2 {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     .info-container p {
-        font-size: 11px;
-    }
-    
-    .down-container {
-        font-size: 10px;
-    }
-    
-    .youtube-icon {
-        font-size: 11px;
+        font-size: 12px;
+        line-height: 1.7;
     }
     
     .container {
         margin: -43px auto 50px;
+        width: calc(100% - 16px);
+        padding: 8px;
+    }
+    
+    .gray-button {
+        width: 130px;
+        height: 32px;
+        font-size: 11px;
+        padding: 0 10px;
+    }
+    
+    .file-input-wrapper {
+        width: 130px;
+        height: 32px;
+    }
+    
+    .file-input-button {
+        font-size: 11px;
+        padding: 0 10px 0 20px;
+    }
+    
+    .file-input-led {
+        width: 7px;
+        height: 7px;
+        left: 6px;
+    }
+    
+    .button-text {
+        font-size: 11px;
+    }
+    
+    .button-icon {
+        font-size: 12px;
+    }
+    
+    .down-container {
+        font-size: 10px;
+        padding: 4px;
+    }
+    
+    .youtube-icon {
         font-size: 11px;
     }
     
@@ -420,47 +554,254 @@ body {
     #hashToCompare {
         height: 32px;
         font-size: 12px;
+        min-width: auto;
     }
     
     .button-group {
         flex-direction: column;
         align-items: center;
+        gap: 5px;
     }
     
-    .gray-button,
-    .file-input-wrapper {
-        width: 100%;
-        max-width: 220px;
-        height: 32px;
-    }
-    
-    .gray-button,
-    .file-input-button,
-    .file-input-button span,
-    .button-text {
+    .result p {
         font-size: 11px;
     }
     
-    .button-icon,
-    .file-input-button i {
-        font-size: 12px;
+    .modal-content {
+        font-size: 14px;
+        padding: 15px;
+    }
+}
+
+/* Celulares (320px - 600px) */
+@media only screen and (max-width: 600px) {
+    .header h1 {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    
+    .header p {
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .header img, .image_1 img {
+        width: 6%;
+    }
+    
+    .header img {
+        right: 5px;
+    }
+    
+    .image_1 img {
+        left: 5px;
+    }
+    
+    .menu {
+        top: 48px;
+        margin: 12px auto 0;
+        font-size: 10px !important;
+        padding: 2px 3px;
+        width: calc(100% - 12px);
+    }
+    
+    .menu a {
+        padding: 4px 5px !important;
+        font-size: 10px;
+    }
+    
+    .info-container {
+        margin: 95px auto 45px;
+        width: calc(100% - 12px);
+        padding: 6px;
+    }
+    
+    .info-container h2 {
+        font-size: 14px;
+    }
+    
+    .info-container p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+    
+    .container {
+        margin: -38px auto 45px;
+        width: calc(100% - 12px);
+        padding: 6px;
+        font-size: 11px;
+    }
+    
+    .gray-button {
+        width: 100%;
+        max-width: 200px;
+        height: 32px;
+        font-size: 11px;
+        margin: 3px 0;
+    }
+    
+    .file-input-wrapper {
+        width: 100%;
+        max-width: 200px;
+        height: 32px;
+        margin: 3px 0;
     }
     
     .file-input-button {
+        font-size: 11px;
         padding: 0 10px 0 20px;
     }
     
     .file-input-led {
         width: 6px;
         height: 6px;
-        left: 5px;
+        left: 6px;
+    }
+    
+    .button-text {
+        font-size: 10px;
+    }
+    
+    .button-icon {
+        font-size: 11px;
+    }
+    
+    .down-container {
+        font-size: 9px;
+        padding: 3px;
+    }
+    
+    .youtube-icon {
+        font-size: 10px;
+    }
+    
+    .hash-input-group {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    #pasteBtn {
+        width: 100%;
+        height: 32px;
+        border-radius: 4px 4px 0 0;
+    }
+    
+    #hashToCompare {
+        height: 32px;
+        font-size: 11px;
+        min-width: auto;
+        border-left: 1px solid #ccc;
+        border-radius: 0 0 4px 4px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
     }
     
     .result p {
-        font-size: 8px;
+        font-size: 10px;
     }
     
     .modal-content {
         font-size: 12px;
+        padding: 15px;
+        max-width: 280px;
+    }
+    
+    .modal-button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    #warningModal .warning-icon img,
+    .loading-icon img {
+        width: 35px;
+    }
+}
+
+/* Celulares pequeños (320px - 480px) */
+@media only screen and (max-width: 480px) {
+    .header h1 {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    .header p {
+        font-size: 9px;
+        margin-bottom: 8px;
+    }
+    
+    .header img, .image_1 img {
+        width: 7%;
+    }
+    
+    .menu {
+        top: 42px;
+        margin: 10px auto 0;
+        font-size: 9px !important;
+        width: calc(100% - 10px);
+    }
+    
+    .menu a {
+        padding: 3px 4px !important;
+        font-size: 9px;
+    }
+    
+    .info-container {
+        margin: 82px auto 40px;
+        width: calc(100% - 10px);
+    }
+    
+    .info-container h2 {
+        font-size: 13px;
+    }
+    
+    .info-container p {
+        font-size: 10px;
+        line-height: 1.5;
+    }
+    
+    .container {
+        margin: -35px auto 40px;
+        width: calc(100% - 10px);
+    }
+    
+    .gray-button,
+    .file-input-wrapper {
+        max-width: 180px;
+        height: 30px;
+    }
+    
+    .gray-button {
+        font-size: 10px;
+    }
+    
+    .file-input-button {
+        font-size: 10px;
+        padding: 0 8px 0 18px;
+    }
+    
+    .file-input-led {
+        width: 5px;
+        height: 5px;
+        left: 5px;
+    }
+    
+    .button-text {
+        font-size: 9px;
+    }
+    
+    .button-icon {
+        font-size: 10px;
+    }
+    
+    .down-container {
+        font-size: 8px;
+    }
+    
+    .result p {
+        font-size: 9px;
     }
 }

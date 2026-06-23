@@ -67,7 +67,7 @@ async function calculateHashes() {
             resultElement.innerHTML = `
                 <p><b>Nombre de archivo (.ext):</b> ${hash.filename}</p>
                 <p><b>Tamaño de archivo:</b><span style="color: #007bff;"> ${hash.sizeFormatted}</span></p>
-                <p><b>Hash SHA-1:</b><span style="color: #28a745;"> ${hash.hash}</span></p>
+                <p><b>Hash SHA-256:</b><span style="color: #28a745;"> ${hash.hash}</span></p>
             `;
             hashResults.appendChild(resultElement);
         }

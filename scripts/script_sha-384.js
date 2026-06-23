@@ -25,6 +25,15 @@ function closeModal() {
     document.getElementById('successModal').style.display = 'none';
 }
 
+// Función para formatear tamaño de archivo
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    const size = (bytes / Math.pow(1024, i)).toFixed(2);
+    return `${size} ${units[i]}`;
+}
+
 // Función principal para calcular hashes
 async function calculateHashes() {
     const fileInput = document.getElementById('fileInput');
@@ -57,7 +66,8 @@ async function calculateHashes() {
             resultElement.classList.add('result');
             resultElement.innerHTML = `
                 <p><b>Nombre de archivo (.ext):</b> ${hash.filename}</p>
-                <p><span style="color: #007bff;"><b>Hash SHA-384:</b> ${hash.hash}</span></p>
+                <p><b>Hash SHA-1:</b><span style="color: #28a745;"> ${hash.hash}</span></p>
+                <p><b>Tamaño de archivo:</b><span style="color: #007bff;"> ${hash.sizeFormatted}</span></p>
             `;
             hashResults.appendChild(resultElement);
         }
@@ -91,7 +101,9 @@ async function calculateFileHash(file) {
     
     return {
         filename: file.name,
-        hash: hashInstance.hex()
+        hash: hashInstance.hex(),
+		size: file.size,
+        sizeFormatted: formatFileSize(file.size)
     };
 }
 
@@ -160,7 +172,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.4.4)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.5.4)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-384</h2>
@@ -175,7 +187,8 @@ function printResults() {
         printWindow.document.write(`
 		<li>
 			<b>Nombre de archivo (.ext):</b> ${item.filename}<br>
-			<b>Hash SHA-384:</b> ${item.hash}<br><br>
+			<b>Hash SHA-384:</b> ${item.hash}<br>
+			<b>Tamaño de archivo:</b> ${item.sizeFormatted}<br><br>
 		</li>
         `);
     });

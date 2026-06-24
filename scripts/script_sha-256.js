@@ -187,8 +187,8 @@ function printResults() {
         printWindow.document.write(`
 		<li>
 			<b>Nombre de archivo (.ext):</b> ${item.filename}<br>
-			<b>Hash SHA-256:</b> ${item.hash}<br>
-			<b>Tamaño de archivo:</b> ${item.sizeFormatted}<br><br>
+			<b>Tamaño de archivo:</b> ${item.sizeFormatted}<br>
+			<b>Hash SHA-256:</b> ${item.hash}<br><br>
 		</li>
         `);
     });

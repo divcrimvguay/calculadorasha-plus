@@ -16,7 +16,7 @@
         </div>
             <img src="images/logo_2.png" alt="Escudo División Policía Científica Villaguay">
         <h1>Calculadora Algorítmica SHA+</h1>
-        <p>Versión 3.5.4</p>
+        <p>Versión 3.5.5</p>
         <p><i>Policía de Entre Ríos - División Policía Científica Villaguay</i></p>
     </header>
     <nav class="menu">
@@ -74,7 +74,6 @@
 			<i class="fas fa-redo button-icon"></i>
 			<span class="button-text">Reiniciar</span>
 		</button>
-		<div id="hashResults"></div>
 		<div id="successModal" class="modal" style="display: none">
 			<div class="modal-content">
 				<p style="font-size: 16px; line-height: 1.5; white-space: nowrap;">¡Los hashes fueron calculados exitosamente!</p>
@@ -82,6 +81,10 @@
 			</div>
 		</div>
     </div>
+	<div class="container" id="resultsContainer" style="display: none;">
+		<h3 style="color: white; margin-top: 0; margin-bottom: 10px;">Reporte de Hashes SHA-384</h3>
+		<div id="hashResults"></div>
+	</div>
 	<script src="scripts/sha512.min.js"></script>
     <script src="scripts/script_sha-384.js"></script>
 	<div class="down-container">

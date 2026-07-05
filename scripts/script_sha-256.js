@@ -58,6 +58,9 @@ async function calculateHashes() {
     });
 
     try {
+        // Mostrar el contenedor de resultados
+        document.getElementById('resultsContainer').style.display = 'block';
+
         for (const file of fileInput.files) {
             const hash = await calculateFileHash(file);
             calculatedHashes.push(hash);
@@ -67,7 +70,7 @@ async function calculateHashes() {
             resultElement.innerHTML = `
                 <p><b>Nombre de archivo (.ext):</b> ${hash.filename}</p>
                 <p><b>Tamaño de archivo:</b><span style="color: #007bff;"> ${hash.sizeFormatted}</span></p>
-                <p><b>Hash SHA-256:</b><span style="color: #28a745;"> ${hash.hash}</span></p>
+                <p><b>Hash SHA-1:</b><span style="color: #28a745;"> ${hash.hash}</span></p>
             `;
             hashResults.appendChild(resultElement);
         }
@@ -172,7 +175,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.5.4)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.5.5)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-256</h2>
@@ -187,8 +190,8 @@ function printResults() {
         printWindow.document.write(`
 		<li>
 			<b>Nombre de archivo (.ext):</b> ${item.filename}<br>
-			<b>Tamaño de archivo:</b> ${item.sizeFormatted}<br>
-			<b>Hash SHA-256:</b> ${item.hash}<br><br>
+			<b>Hash SHA-256:</b> ${item.hash}<br>
+			<b>Tamaño de archivo:</b> ${item.sizeFormatted}<br><br>
 		</li>
         `);
     });
@@ -217,7 +220,10 @@ function clearResults() {
     const hashResults = document.getElementById('hashResults');
     hashResults.innerHTML = '';
     calculatedHashes.length = 0;
-    
+
+    // Ocultar el contenedor de resultados
+    document.getElementById('resultsContainer').style.display = 'none';
+
     const fileInput = document.getElementById('fileInput');
     fileInput.value = '';
     updateFileButtonStatus();

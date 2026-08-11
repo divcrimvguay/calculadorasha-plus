@@ -1,3 +1,9 @@
+// Title: Calculadora Algorítmica SHA+
+// Version: 3.5.5
+// Author: Miguel Santiago Kremzky (Auditor/Consultor/Técnico/Programador en Redes y Sistemas Informáticos - Perito en Informática Forense - Especialista en Ciberseguridad) :)
+// Description: "LAS MALVINAS SON ARGENTINAS"
+// Copyright: MSK21 Software | 2023 - 2026
+
 // Mapeo de longitud de hash → algoritmo
 const HASH_MAP = {
     40: { name: 'SHA-1', instance: () => sha1.create() },

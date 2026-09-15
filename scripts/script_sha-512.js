@@ -1,5 +1,5 @@
 // Title: Calculadora Algorítmica SHA+
-// Version: 3.5.5
+// Version: 3.5.6
 // Author: Miguel Santiago Kremzky (Auditor/Consultor/Técnico/Programador en Redes y Sistemas Informáticos - Perito en Informática Forense - Especialista en Ciberseguridad) :)
 // Description: "LAS MALVINAS SON ARGENTINAS"
 // Copyright: MSK21 Software | 2023 - 2026
@@ -181,7 +181,7 @@ function printResults() {
 	<body>
 		<div class="container">
 			<img class="logo" src="images/logo_1.png" alt="Escudo Policía de Entre Ríos">
-			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.5.5)</b>
+			<b>POLICÍA DE ENTRE RÍOS<br>Calculadora Algorítmica SHA+ (versión 3.5.6)</b>
 		</div>
 		<div class="line"></div>
 		<h2>REPORTE HASH SHA-512</h2>
